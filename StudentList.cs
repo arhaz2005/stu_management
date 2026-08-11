@@ -29,7 +29,7 @@ public class StudentManager
         students.Add(student);
     }
 
-        public void ShowAll()
+    public void ShowAll()
     {
         Console.WriteLine("Show------------");
         foreach (Student student in students)
@@ -37,7 +37,7 @@ public class StudentManager
             student.ShowInfo();
         }
     }
-    
+
     public Student SearchById()
     {
         Console.WriteLine("enter id:");
@@ -54,8 +54,8 @@ public class StudentManager
         }
     }
 
-    
-        public Student SearchByName()
+
+    public Student SearchByName()
     {
         Console.WriteLine("enter name:");
         string name = Console.ReadLine();
@@ -71,7 +71,7 @@ public class StudentManager
         }
     }
 
-    
+
     public void DeleteStudentById()
     {
         Console.WriteLine("enter id:");
@@ -88,28 +88,32 @@ public class StudentManager
         }
     }
 
-    
-    public List<Student> OrderByAge(){
-        List<Student> copy= students.ToList();
+
+    public List<Student> OrderByAge()
+    {
+        List<Student> copy = students.ToList();
         List<Student> result = new List<Student>();
-        int index=CountStudent();
-        for(int i=0;i<index;i++){
-            Student MaxAge=copy[0];
-            foreach(Student s2 in copy){
-                if(s2.DateOfBirth < MaxAge.DateOfBirth){
-                    MaxAge=s2;
-                }        
+        int index = CountStudent();
+        for (int i = 0; i < index; i++)
+        {
+            Student MaxAge = copy[0];
+            foreach (Student s2 in copy)
+            {
+                if (s2.DateOfBirth < MaxAge.DateOfBirth)
+                {
+                    MaxAge = s2;
+                }
             }
             result.Add(MaxAge);
-            copy.Remove(MaxAge);        
+            copy.Remove(MaxAge);
         }
         return result;
     }
 
     public int CountStudent()
     {
-        int c=0;
-        foreach(Student s in students)
+        int c = 0;
+        foreach (Student s in students)
         {
             c++;
         }
@@ -118,11 +122,26 @@ public class StudentManager
 
 
 
+    public void TestAdd()
+    {
+        DateTime d1 = new DateTime(2005, 08, 05);
+        Student s1 = new Student("zahra", d1, "arhaz@gmail.com", "09123456789");
+        students.Add(s1);
+        
+        DateTime d2 = new DateTime(2000, 10, 29);
+        Student s2 = new Student("reza", d2, "reza@gmail.com", "09145678765");
+        students.Add(s2);
 
+        
+        DateTime d3 = new DateTime(1990, 11, 16);
+        Student s3 = new Student("ali", d3, "ali@gmail.com", "09123456789");
+        students.Add(s3);
 
-
-
-
-
+        
+        DateTime d4 = new DateTime(1999, 11, 20);
+        Student s4 = new Student("wrong", d4, "wrong@gmail.com", "09123456789");
+        students.Add(s4);
+    }
 
 }
+

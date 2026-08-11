@@ -1,8 +1,11 @@
 ﻿using System.Collections.Concurrent;
+using System.Data.Common;
 
 StudentManager manager = new StudentManager();
 bool flag = true;
 
+
+manager.TestAdd();
 while (flag)
 {
     Console.WriteLine("---------------------------------------------------");

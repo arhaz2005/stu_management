@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 
 
 public class StudentManager
 {
     List<Student> students = new List<Student>();
+
     public void AddStudent()
     {
         string name, number, email;
@@ -90,10 +92,11 @@ public class StudentManager
     public List<Student> OrderByAge(){
         List<Student> copy= students.ToList();
         List<Student> result = new List<Student>();
-        foreach(Student s1 in copy){
+        int index=CountStudent();
+        for(int i=0;i<index;i++){
             Student MaxAge=copy[0];
             foreach(Student s2 in copy){
-                if(s2.DateOfBirth.Year < MaxAge.DateOfBirth.Year){
+                if(s2.DateOfBirth < MaxAge.DateOfBirth){
                     MaxAge=s2;
                 }        
             }
@@ -103,7 +106,15 @@ public class StudentManager
         return result;
     }
 
-
+    public int CountStudent()
+    {
+        int c=0;
+        foreach(Student s in students)
+        {
+            c++;
+        }
+        return c;
+    }
 
 
 

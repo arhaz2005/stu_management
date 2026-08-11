@@ -9,7 +9,7 @@ public class Student
     private string Email;
     private string PhoneNumber;
     private DateTime RegisterDate;
-    private static int NextId = 0;
+    private static int NextId = 1;
  public Student(){    }
 
   public Student (string name, DateTime dateOfBirth,
@@ -92,7 +92,7 @@ public class Student
             case "1":
                 Console.WriteLine("enter full name:\n");
                 string newName =Console.ReadLine();
-                this.FullName=newName;
+                FullName=newName;
                 break;
             case "2":
                 
@@ -128,6 +128,5 @@ public class Student
                 break;
         }
     }
-
 
 }

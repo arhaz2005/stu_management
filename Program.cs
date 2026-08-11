@@ -1,5 +1,8 @@
-﻿StudentManager manager = new StudentManager();
+﻿using System.Collections.Concurrent;
+
+StudentManager manager = new StudentManager();
 bool flag = true;
+
 while (flag)
 {
     Console.WriteLine("---------------------------------------------------");
@@ -10,8 +13,10 @@ while (flag)
     Console.WriteLine("5-search by name");
     Console.WriteLine("6-search by id");
     Console.WriteLine("7-order by age");
-    Console.WriteLine("8-exist");
-}
+    Console.WriteLine("8-count");
+
+    Console.WriteLine("0-exist");
+
 
     string answer = Console.ReadLine();
     switch (answer) {
@@ -50,9 +55,15 @@ while (flag)
            {
                s.ShowInfo();
            }
-
            break;
+
         case "8":
+            Console.WriteLine("Count :");
+            Console.WriteLine(manager.CountStudent());
+            break;
+
+
+        case "0":
             flag = false;
             break;
 
@@ -60,3 +71,4 @@ while (flag)
             Console.WriteLine("Invalid input!");
             break;
     }
+}

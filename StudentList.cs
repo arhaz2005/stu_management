@@ -69,6 +69,23 @@ public class StudentManager
         }
     }
 
+    
+    public void DeleteStudentById()
+    {
+        Console.WriteLine("enter id:");
+        int id = int.Parse(Console.ReadLine());
+        Student student = students.Find(s => s.Id == id);
+        if (student != null)
+        {
+            students.Remove(student);
+            Console.WriteLine("deleted!");
+        }
+        else
+        {
+            Console.WriteLine("id not exist!");
+        }
+    }
+
 
 
 

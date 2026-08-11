@@ -12,3 +12,51 @@ while (flag)
     Console.WriteLine("7-order by age");
     Console.WriteLine("8-exist");
 }
+
+    string answer = Console.ReadLine();
+    switch (answer) {
+        case "1":
+            manager.AddStudent();
+            break;
+
+        case "2":
+            manager.DeleteStudentById();
+            break;
+
+        case "3":
+            Student selectedStudent = manager.SearchById();
+            if (selectedStudent != null){
+            selectedStudent.EditInfo();
+            }
+            break;
+
+        case "4":
+            manager.ShowAll();
+            break;
+
+        case "5":
+            manager.SearchByName().ShowInfo();
+            break;
+            
+
+        case "6":
+            manager.SearchById().ShowInfo();
+            break;
+
+         case "7":
+           List<Student> result = manager.OrderByAge();
+
+          foreach (Student s in result)
+           {
+               s.ShowInfo();
+           }
+
+           break;
+        case "8":
+            flag = false;
+            break;
+
+        default:
+            Console.WriteLine("Invalid input!");
+            break;
+    }

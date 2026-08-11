@@ -83,4 +83,51 @@ public class Student
         Console.WriteLine($"Register date: {this.RegisterDate:yyyy/MM/dd}");
         Console.WriteLine("----------------------------------------------------------------");
     }
+
+    public void EditInfo(){
+        Console.WriteLine("for Edit enter the number:\n 1-name \n 2-date of birth \n 3-Email \n 4-phone number");
+        string answer=Console.ReadLine();
+        switch (answer)
+        {
+            case "1":
+                Console.WriteLine("enter full name:\n");
+                string newName =Console.ReadLine();
+                this.FullName=newName;
+                break;
+            case "2":
+                
+                DateTime dateOfBirth= SetDate();
+                DateTime testDate = new DateTime(1950, 1, 1);
+                if (dateOfBirth > testDate && dateOfBirth < DateTime.Now)
+               {
+                   DateOfBirth = dateOfBirth;
+                }
+                else
+                {
+                   DateOfBirth = testDate;
+                  }
+                break;
+                
+            case "3":  
+                Console.WriteLine("enter Email:\n");
+                Email =Console.ReadLine();
+                break;
+            case "4":
+                Console.WriteLine("enter phone numbar:\n");
+                string phoneNumber =Console.ReadLine();    
+                if (phoneNumber.Length == 11)
+                  {
+                   PhoneNumber = phoneNumber;
+                   }
+               else
+                {
+                  PhoneNumber = "09123456789";
+                  }
+                  break;
+            default:
+                break;
+        }
+    }
+
+
 }

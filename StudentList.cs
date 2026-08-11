@@ -87,7 +87,7 @@ public class StudentManager
     }
 
     
-    List<Student> OrderByAge(){
+    public List<Student> OrderByAge(){
         List<Student> copy= students.ToList();
         List<Student> result = new List<Student>();
         foreach(Student s1 in copy){

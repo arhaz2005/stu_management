@@ -29,13 +29,45 @@ public class StudentManager
 
         public void ShowAll()
     {
-        Console.WriteLine("Show------------")
+        Console.WriteLine("Show------------");
         foreach (Student student in students)
         {
             student.ShowInfo();
         }
     }
+    
+    public Student SearchById()
+    {
+        Console.WriteLine("enter id:");
+        int id = int.Parse(Console.ReadLine());
+        Student student = students.Find(s => s.Id == id);
+        if (student != null)
+        {
+            return student;
+        }
+        else
+        {
+            Console.WriteLine("this Id not exist!");
+            return null;
+        }
+    }
 
+    
+        public Student SearchByName()
+    {
+        Console.WriteLine("enter name:");
+        string name = Console.ReadLine();
+        Student student = students.Find(s => s.FullName == name);
+        if (student != null)
+        {
+            return student;
+        }
+        else
+        {
+            Console.WriteLine("this name not exist!");
+            return null;
+        }
+    }
 
 
 

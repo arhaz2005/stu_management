@@ -10,13 +10,17 @@ public class StudentManager
 
     public void AddStudent()
     {
-        string name, number, email;
+        string name, LName, number, email;
         DateTime dateOfBirth;
         Console.WriteLine("-------------ADD STUDENT-----------");
 
         Console.WriteLine("Enter name:");
         name = Console.ReadLine();
+        Console.WriteLine("Enter last name:");
+        LName = Console.ReadLine();
+
         Student s = new Student();
+
         dateOfBirth = s.SetDate();
 
         Console.WriteLine("enter email:");
@@ -25,7 +29,7 @@ public class StudentManager
         Console.WriteLine("enter phone number:");
         number = Console.ReadLine();
 
-        Student student = new Student(name, dateOfBirth, email, number);
+        Student student = new Student(name, LName, dateOfBirth, email, number);
         students.Add(student);
     }
 
@@ -59,9 +63,9 @@ public class StudentManager
     {
         Console.WriteLine("---------------SEARCH BY NAME-----------------");
 
-        Console.WriteLine("enter name:");
+        Console.WriteLine("enter last name:");
         string name = Console.ReadLine();
-        Student student = students.Find(s => s.FullName == name);
+        Student student = students.Find(s => s.LastName == name);
         if (student != null)
         {
             return student;
@@ -128,7 +132,7 @@ public class StudentManager
 
             foreach (Student s in copy)
             {
-                if (string.Compare(s.FullName, firstName.FullName) < 0)
+                if (string.Compare(s.LastName, firstName.LastName) < 0)
                 {
                     firstName = s;
                 }
@@ -156,21 +160,21 @@ public class StudentManager
     public void TestAdd()
     {
         DateTime d1 = new DateTime(2005, 08, 05);
-        Student s1 = new Student("zahra", d1, "arhaz@gmail.com", "09123456789");
+        Student s1 = new Student("zahra", "safari", d1, "arhaz@gmail.com", "09123456789");
         students.Add(s1);
 
         DateTime d2 = new DateTime(2000, 10, 29);
-        Student s2 = new Student("reza", d2, "reza@gmail.com", "09145678765");
+        Student s2 = new Student("reza", "rezaee", d2, "reza@gmail.com", "09145678765");
         students.Add(s2);
 
 
         DateTime d3 = new DateTime(1990, 11, 16);
-        Student s3 = new Student("ali", d3, "ali@gmail.com", "09123456789");
+        Student s3 = new Student("ali", "some", d3, "ali@gmail.com", "09123456789");
         students.Add(s3);
 
 
-        DateTime d4 = new DateTime(1999, 11, 20);
-        Student s4 = new Student("wrong", d4, "wrong@gmail.com", "09123456789");
+        DateTime d4 = new DateTime(1999, 01, 20);
+        Student s4 = new Student("mahsa", "some ", d4, "wrong@gmail.com", "09123456789");
         students.Add(s4);
     }
 

@@ -4,7 +4,9 @@ using System;
 public class Student
 {
     public int Id {get;private set;}
-    public string FullName {get; private set;}
+    public string FirstName {get; private set;}
+    public string LastName {get; private set;}
+
     public DateTime DateOfBirth{get; private set;}
     private string Email;
     private string PhoneNumber;
@@ -12,10 +14,11 @@ public class Student
     private static int NextId = 1;
  public Student(){    }
 
-  public Student (string name, DateTime dateOfBirth,
+  public Student (string name,string LName, DateTime dateOfBirth,
      string email, string phoneNumber)
     {
-        FullName = name;
+        FirstName = name;
+        LastName=LName;
 
         DateTime testDate = new DateTime(1950, 1, 1);
         if (dateOfBirth > testDate && dateOfBirth < DateTime.Now)
@@ -76,7 +79,7 @@ public class Student
     {
         Console.WriteLine("------------------------------------------------------");
         Console.WriteLine($"Id: {Id}");
-        Console.WriteLine($"full name: {FullName}");
+        Console.WriteLine($"full name: {FirstName}  {LastName}");
         Console.WriteLine($"date of birth: {this.DateOfBirth:yyyy/MM/dd}");
         Console.WriteLine($"Email: {Email}");
         Console.WriteLine($"Phone number: {PhoneNumber}");
@@ -84,16 +87,19 @@ public class Student
     }
 
     public void EditInfo(){
-        Console.WriteLine("-------------------EDIT----------------------");
+        Console.WriteLine("------------------dotnet run-EDIT----------------------");
 
         Console.WriteLine("for Edit enter the number:\n 1-name \n 2-date of birth \n 3-Email \n 4-phone number");
         string answer=Console.ReadLine();
         switch (answer)
         {
             case "1":
-                Console.WriteLine("enter full name:\n");
+                Console.WriteLine("enter name:\n");
                 string newName =Console.ReadLine();
-                FullName=newName;
+                FirstName=newName;
+                Console.WriteLine("enter Last name:\n");
+                string LName =Console.ReadLine();
+                LastName=LName;
                 break;
             case "2":
                 

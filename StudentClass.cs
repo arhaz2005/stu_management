@@ -74,17 +74,18 @@ public class Student
 
     public void ShowInfo()
     {
-        Console.WriteLine("-----------------------------------------------------------------");
+        Console.WriteLine("------------------------------------------------------");
         Console.WriteLine($"Id: {Id}");
         Console.WriteLine($"full name: {FullName}");
         Console.WriteLine($"date of birth: {this.DateOfBirth:yyyy/MM/dd}");
         Console.WriteLine($"Email: {Email}");
         Console.WriteLine($"Phone number: {PhoneNumber}");
         Console.WriteLine($"Register date: {this.RegisterDate:yyyy/MM/dd}");
-        Console.WriteLine("----------------------------------------------------------------");
     }
 
     public void EditInfo(){
+        Console.WriteLine("-------------------EDIT----------------------");
+
         Console.WriteLine("for Edit enter the number:\n 1-name \n 2-date of birth \n 3-Email \n 4-phone number");
         string answer=Console.ReadLine();
         switch (answer)

@@ -12,7 +12,7 @@ public class StudentManager
     {
         string name, number, email;
         DateTime dateOfBirth;
-        Console.WriteLine("ADD STUDENT-----------");
+        Console.WriteLine("-------------ADD STUDENT-----------");
 
         Console.WriteLine("Enter name:");
         name = Console.ReadLine();
@@ -31,7 +31,7 @@ public class StudentManager
 
     public void ShowAll()
     {
-        Console.WriteLine("Show------------");
+        Console.WriteLine("-------------------SHOW--------------------");
         foreach (Student student in students)
         {
             student.ShowInfo();
@@ -40,6 +40,7 @@ public class StudentManager
 
     public Student SearchById()
     {
+        Console.WriteLine("---------------SEARCH BY ID-----------------");
         Console.WriteLine("enter id:");
         int id = int.Parse(Console.ReadLine());
         Student student = students.Find(s => s.Id == id);
@@ -54,9 +55,10 @@ public class StudentManager
         }
     }
 
-
     public Student SearchByName()
     {
+        Console.WriteLine("---------------SEARCH BY NAME-----------------");
+
         Console.WriteLine("enter name:");
         string name = Console.ReadLine();
         Student student = students.Find(s => s.FullName == name);
@@ -71,9 +73,10 @@ public class StudentManager
         }
     }
 
-
     public void DeleteStudentById()
     {
+        Console.WriteLine("---------------DELETE BY ID-----------------");
+
         Console.WriteLine("enter id:");
         int id = int.Parse(Console.ReadLine());
         Student student = students.Find(s => s.Id == id);
@@ -88,9 +91,10 @@ public class StudentManager
         }
     }
 
-
     public List<Student> OrderByAge()
     {
+        Console.WriteLine("---------------ORDER BY AGE-----------------");
+
         List<Student> copy = students.ToList();
         List<Student> result = new List<Student>();
         int index = CountStudent();
@@ -110,8 +114,37 @@ public class StudentManager
         return result;
     }
 
+    public List<Student> OrderByName()
+    {
+        Console.WriteLine("---------------ORDER BY NAME-----------------");
+        List<Student> copy = students.ToList();
+        List<Student> result = new List<Student>();
+
+        int index = copy.Count;
+
+        for (int i = 0; i < index; i++)
+        {
+            Student firstName = copy[0];
+
+            foreach (Student s in copy)
+            {
+                if (string.Compare(s.FullName, firstName.FullName) < 0)
+                {
+                    firstName = s;
+                }
+            }
+
+            result.Add(firstName);
+            copy.Remove(firstName);
+        }
+
+        return result;
+    }
+
     public int CountStudent()
     {
+        Console.WriteLine("---------------COUNT-----------------");
+
         int c = 0;
         foreach (Student s in students)
         {
@@ -120,24 +153,22 @@ public class StudentManager
         return c;
     }
 
-
-
     public void TestAdd()
     {
         DateTime d1 = new DateTime(2005, 08, 05);
         Student s1 = new Student("zahra", d1, "arhaz@gmail.com", "09123456789");
         students.Add(s1);
-        
+
         DateTime d2 = new DateTime(2000, 10, 29);
         Student s2 = new Student("reza", d2, "reza@gmail.com", "09145678765");
         students.Add(s2);
 
-        
+
         DateTime d3 = new DateTime(1990, 11, 16);
         Student s3 = new Student("ali", d3, "ali@gmail.com", "09123456789");
         students.Add(s3);
 
-        
+
         DateTime d4 = new DateTime(1999, 11, 20);
         Student s4 = new Student("wrong", d4, "wrong@gmail.com", "09123456789");
         students.Add(s4);

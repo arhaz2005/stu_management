@@ -86,6 +86,23 @@ public class StudentManager
         }
     }
 
+    
+    List<Student> OrderByAge(){
+        List<Student> copy= students.ToList();
+        List<Student> result = new List<Student>();
+        foreach(Student s1 in copy){
+            Student MaxAge=copy[0];
+            foreach(Student s2 in copy){
+                if(s2.DateOfBirth.Year < MaxAge.DateOfBirth.Year){
+                    MaxAge=s2;
+                }        
+            }
+            result.Add(MaxAge);
+            copy.Remove(MaxAge);        
+        }
+        return result;
+    }
+
 
 
 
